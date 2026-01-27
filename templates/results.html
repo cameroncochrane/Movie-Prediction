@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Recommendations</title>
+    <style>
+      body { font-family: sans-serif; margin: 24px; }
+      small { color: #444; }
+    </style>
+  </head>
+
+  <body>
+    <h2>Similar Movies</h2>
+
+    <p>
+      <b>Selected:</b> {{ selected.title }}
+      {% if selected.release_date %} ({{ selected.release_date }}){% endif %}
+    </p>
+
+    <ol>
+      {% for r in recs %}
+        <li>
+          <b>{{ r.title }}</b>
+          {% if r.release_date %} ({{ r.release_date }}){% endif %}
+          <br/>
+          Similarity: {{ "%.3f"|format(r.similarity) }}
+          {% if r.vote_average %} | TMDB rating: {{ r.vote_average }}{% endif %}
+          <br/>
+          <small>{{ r.overview }}</small>
+        </li>
+        <br/>
+      {% endfor %}
+    </ol>
+
+    <p><a href="/">Pick another movie</a></p>
+  </body>
+</html>
