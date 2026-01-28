@@ -3,7 +3,7 @@ from functions import *
 
 app = Flask(__name__)
 
-# Load the movie catalogue and build the TF-IDF model once when the server starts
+# Load the movie catalogue and build the TF-IDF model once when the server starts (imported from functions.py)
 catalogue = load_catalogue_with_soup()
 recommender = ContentRecommender(catalogue)
 

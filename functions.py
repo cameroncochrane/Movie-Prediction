@@ -7,13 +7,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 MOVIES_PATH = "data/tmdb_5000_movies.csv"
 CREDITS_PATH = "data/tmdb_5000_credits.csv"
 
+# Data cleaning functions:
 
 def _safe_literal_eval(x):
     """
     The TMDB CSV stores JSON-like lists as strings.
     Example: '[{"id": 28, "name": "Action"}, ...]'
-    We parse them into Python objects safely using ast.literal_eval.
-    If anything fails, return an empty list.
+    Parse them into Python objects using ast.literal_eval.
+    Else, return an empty list.
     """
     if pd.isna(x):
         return []
@@ -124,12 +125,8 @@ def load_catalogue_with_soup():
 
     return out
 
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
-
-# Content Recommender
+# Content Recommender ('Modelling'):
 class ContentRecommender:
     def __init__(self, df):
         """
