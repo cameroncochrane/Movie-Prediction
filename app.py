@@ -60,7 +60,7 @@ def recommend():
     selected_row = catalogue.loc[catalogue["id"] == movie_id].iloc[0].to_dict()
     recs = recommender.recommend_by_id(movie_id=movie_id, top_n=top_n)
 
-    return render_template("results.html", selected=selected_row, recs=recs)
+    return render_template("results.html", selected=selected_row, recs=recs) #Return the 'recommendations' page (saved as "results.html")
 
 
 if __name__ == "__main__":
